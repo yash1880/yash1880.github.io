@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yash Bulchandani — Full Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f4f1ea; --card: #ffffff; --ink: #17171a; --dim: #5d5d66; --line: #e3ded2;
+  --accent: #ff5a36; --accent2: #3a5bff; --lime: #d9f56b; --lilac: #e4dcff; --sky: #d5e6ff;
+  --font-d: 'Bricolage Grotesque', 'Helvetica Neue', sans-serif;
+  --font-b: 'Inter', system-ui, sans-serif;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101012; --card: #1a1a1e; --ink: #f3f1ec; --dim: #a2a2ab; --line: #2b2b31;
+    --lime: #3b4a12; --lilac: #2c2646; --sky: #1b2a45;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101012; --card: #1a1a1e; --ink: #f3f1ec; --dim: #a2a2ab; --line: #2b2b31;
+  --lime: #3b4a12; --lilac: #2c2646; --sky: #1b2a45;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: env(safe-area-inset-top, 0px); }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-b); line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+/* nav */
+nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; padding: 14px 0; }
+.nav-pill {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  background: color-mix(in srgb, var(--card) 85%, transparent); backdrop-filter: blur(12px);
+  border: 1px solid var(--line); border-radius: 999px; padding: 8px 10px 8px 20px;
+}
+.logo { font-family: var(--font-d); font-weight: 800; font-size: 18px; }
+.logo i { color: var(--accent); font-style: normal; }
+.links { display: flex; gap: 4px; font-size: 14px; font-weight: 500; }
+.links a { padding: 8px 14px; border-radius: 999px; color: var(--dim); transition: background .2s, color .2s; }
+.links a:hover { background: var(--bg); color: var(--ink); }
+.links a.cta { background: var(--ink); color: var(--bg); }
+.links a.cta:hover { background: var(--accent); color: #fff; }
+
+/* bento */
+.bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; margin: 10px 0 14px; }
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 28px;
+  transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(0,0,0,.08); }
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: #2fbf71; animation: blink 1.8s infinite; }
+@keyframes blink { 50% { opacity: .3; } }
+
+.hero { grid-column: span 8; padding: 44px 40px; display: flex; flex-direction: column; justify-content: space-between; min-height: 360px; }
+h1 { font-family: var(--font-d); font-weight: 800; font-size: clamp(38px, 6.2vw, 68px); line-height: 1; letter-spacing: -.03em; }
+h1 em { font-style: normal; color: var(--accent); }
+.hero p { margin-top: 20px; color: var(--dim); max-width: 46ch; font-size: 17px; }
+.btns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+.btn { font-weight: 600; font-size: 14px; padding: 13px 22px; border-radius: 999px; border: 1px solid var(--ink); transition: transform .2s, background .2s, color .2s; }
+.btn:hover { transform: translateY(-2px); }
+.btn.fill { background: var(--ink); color: var(--bg); }
+.btn.fill:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn.line:hover { background: var(--ink); color: var(--bg); }
+
+.edu { grid-column: span 4; background: var(--lime); border-color: transparent; display: flex; flex-direction: column; justify-content: space-between; }
+.edu .big { font-family: var(--font-d); font-weight: 800; font-size: 56px; line-height: 1; letter-spacing: -.03em; }
+.edu h3 { font-family: var(--font-d); font-size: 20px; margin-bottom: 4px; }
+.edu p { font-size: 14px; color: var(--dim); }
+
+.about { grid-column: span 7; }
+.about p { color: var(--dim); font-size: 16px; margin-bottom: 12px; }
+.about strong { color: var(--ink); font-weight: 600; }
+.stat { grid-column: span 5; background: var(--ink); color: var(--bg); border-color: transparent; display: flex; flex-direction: column; justify-content: space-between; }
+.stat .eyebrow { color: color-mix(in srgb, var(--bg) 65%, transparent); }
+.stat .num { font-family: var(--font-d); font-weight: 800; font-size: 84px; line-height: .9; letter-spacing: -.04em; color: var(--lime); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .stat .num { color: #d9f56b; } }
+.stat p { font-size: 15px; opacity: .8; }
+
+h2 { font-family: var(--font-d); font-weight: 800; font-size: clamp(28px, 4vw, 40px); letter-spacing: -.02em; margin: 56px 0 18px; display: flex; align-items: baseline; gap: 12px; }
+h2 small { font-family: var(--font-b); font-size: 13px; font-weight: 500; color: var(--dim); }
+
+/* skills */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.skill:nth-child(1) { background: var(--lilac); } .skill:nth-child(2) { background: var(--sky); }
+.skill { padding: 22px; } .skill h3 { font-family: var(--font-d); font-size: 16px; margin-bottom: 12px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-size: 13px; font-weight: 500; padding: 5px 12px; border-radius: 999px; background: color-mix(in srgb, var(--card) 80%, transparent); border: 1px solid var(--line); transition: transform .2s, background .2s, color .2s; }
+.tag:hover { transform: translateY(-2px) rotate(-2deg); background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* projects */
+.projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.proj { display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.proj .idx { font-family: var(--font-d); font-weight: 800; font-size: 14px; color: var(--accent); margin-bottom: 10px; }
+.proj h3 { font-family: var(--font-d); font-size: 24px; line-height: 1.15; letter-spacing: -.01em; margin-bottom: 8px; }
+.proj .stack { font-size: 12.5px; font-weight: 500; color: var(--accent2); margin-bottom: 14px; }
+.proj ul { list-style: none; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.proj li { font-size: 14.5px; color: var(--dim); padding-left: 16px; position: relative; }
+.proj li::before { content: ''; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: var(--line); transition: background .2s, transform .2s; }
+.proj:hover li::before { background: var(--accent); transform: scale(1.3); }
+.proj .go { margin-top: 20px; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 14px; padding-top: 16px; border-top: 1px solid var(--line); }
+.proj .go span { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--bg); transition: transform .25s, background .25s, color .25s; }
+.proj:hover .go span { background: var(--accent); color: #fff; transform: rotate(-45deg); }
+.proj.wide { grid-column: span 2; }
+
+/* certs */
+.certs { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.cert { padding: 22px; } .cert .who { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--dim); margin-bottom: 8px; }
+.cert h3 { font-family: var(--font-d); font-size: 20px; line-height: 1.2; }
+
+/* contact */
+.contact { background: var(--accent); color: #fff; border-color: transparent; padding: 48px 40px; margin-top: 56px; }
+.contact h2 { margin: 0 0 12px; font-size: clamp(32px, 5.5vw, 60px); line-height: 1; }
+.contact > p { opacity: .9; max-width: 44ch; margin-bottom: 28px; }
+.clinks { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.clinks a { display: flex; flex-direction: column; background: rgba(255,255,255,.14); border-radius: 16px; padding: 14px 18px; font-weight: 500; font-size: 14.5px; transition: background .2s, transform .2s; overflow-wrap: anywhere; }
+.clinks a:hover { background: #fff; color: var(--accent); transform: translateY(-3px); }
+.clinks small { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; opacity: .75; margin-bottom: 2px; }
+footer { display: flex; justify-content: space-between; padding: 28px 0 36px; font-size: 13px; color: var(--dim); }
+
+/* reveal */
+.js .rv { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); }
+.js .rv.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } .js .rv { opacity: 1; transform: none; } }
+
+@media (max-width: 760px) {
+  .links a:not(.cta) { display: none; }
+  .hero, .edu, .about, .stat { grid-column: span 12; }
+  .hero { padding: 32px 26px; min-height: 0; }
+  .projects { grid-template-columns: 1fr; } .proj.wide { grid-column: auto; }
+  .contact { padding: 36px 26px; }
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><div class="nav-pill">
+  <a class="logo" href="#top">yb<i>.</i>dev</a>
+  <div class="links">
+    <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#certifications">Certs</a>
+    <a class="cta" href="#contact">Contact</a>
+  </div>
+</div></div></nav>
+
+<main class="wrap" id="top">
+  <section class="bento">
+    <div class="card hero rv">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>Open to internships</div>
+        <h1>Yash Bulchandani builds <em>full‑stack</em> web apps.</h1>
+        <p>Final-year Computer Engineering student focused on the MERN stack — from secure auth systems to pixel-accurate interfaces built from Figma designs.</p>
+      </div>
+      <div class="btns">
+        <a class="btn fill" href="#projects">View projects</a>
+        <a class="btn line" href="https://github.com/yash1880" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn line" href="mailto:yashbulchandani34@gmail.com">Email me</a>
+      </div>
+    </div>
+    <div class="card edu rv">
+      <div class="eyebrow">Education</div>
+      <div>
+        <div class="big">4th<br>year</div>
+        <h3 style="margin-top:18px">B.Tech, Computer Engineering</h3>
+        <p>Bhagwan Mahavir University<br>Surat, Gujarat</p>
+      </div>
+    </div>
+    <div class="card about rv" id="about">
+      <div class="eyebrow">About</div>
+      <p>I'm a final-year <strong>B.Tech Computer Engineering</strong> student who likes shipping complete features end to end — schema design, auth, API routes, and the interface on top. Most of my recent work has been building secure, role-based systems in <strong>Node.js and Express</strong>, and converting real Figma designs into responsive, production-quality front ends.</p>
+      <p>I'm currently looking for an internship or entry-level role where I can keep building things people actually use.</p>
+    </div>
+    <div class="card stat rv">
+      <div class="eyebrow">Built so far</div>
+      <div class="num">5</div>
+      <p>projects — three full-stack apps and two Figma-to-code builds.</p>
+    </div>
+  </section>
+
+  <h2 id="skills">Skills</h2>
+  <section class="skills">
+    <div class="card skill rv"><h3>Languages</h3><div class="tags"><span class="tag">JavaScript</span><span class="tag">HTML5</span><span class="tag">CSS3</span></div></div>
+    <div class="card skill rv"><h3>Frontend</h3><div class="tags"><span class="tag">React.js</span><span class="tag">Vite</span><span class="tag">Redux Toolkit</span><span class="tag">React Router</span><span class="tag">Bootstrap 5</span><span class="tag">Tailwind CSS</span></div></div>
+    <div class="card skill rv"><h3>Backend &amp; APIs</h3><div class="tags"><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">Flask</span></div></div>
+    <div class="card skill rv"><h3>Database &amp; Auth</h3><div class="tags"><span class="tag">MongoDB</span><span class="tag">Firebase</span><span class="tag">JWT</span><span class="tag">Passport.js</span></div></div>
+    <div class="card skill rv"><h3>Tools</h3><div class="tags"><span class="tag">Git &amp; GitHub</span><span class="tag">Postman</span><span class="tag">Cloudinary</span><span class="tag">Multer</span><span class="tag">EJS</span><span class="tag">VS Code</span></div></div>
+  </section>
+
+  <h2 id="projects">Projects <small>selected work</small></h2>
+  <section class="projects">
+    <a class="card proj rv" href="https://github.com/yash1880/recipe-kitchen" target="_blank" rel="noopener">
+      <div class="idx">01</div><h3>Recipe Kitchen</h3>
+      <div class="stack">Node.js · Express · MongoDB · EJS · JWT · bcryptjs</div>
+      <ul>
+        <li>Full-stack recipe-sharing platform with JWT authentication via HTTP-only cookies and bcrypt password hashing</li>
+        <li>Role-based access control and ownership-based authorization for recipe CRUD operations, with admin override</li>
+        <li>Comments feature and a personalized "My Recipes" dashboard for logged-in users</li>
+      </ul>
+      <div class="go">View on GitHub <span>→</span></div>
+    </a>
+    <a class="card proj rv" href="https://github.com/yash1880/final-admin-panel" target="_blank" rel="noopener">
+      <div class="idx">02</div><h3>Admin Panel Management System</h3>
+      <div class="stack">Node.js · Express · MongoDB · EJS · Passport.js · Multer</div>
+      <ul>
+        <li>Secure admin dashboard using MVC architecture to manage products, categories, subcategories, and extra categories</li>
+        <li>Passport.js-based authentication with session management and protected routes</li>
+        <li>Product image uploads via Multer and email notifications via Nodemailer</li>
+      </ul>
+      <div class="go">View on GitHub <span>→</span></div>
+    </a>
+    <a class="card proj wide rv" href="https://github.com/yash1880/event-management-system" target="_blank" rel="noopener">
+      <div class="idx">03</div><h3>Event Management System</h3>
+      <div class="stack">Node.js · Express · MongoDB · EJS · Multer</div>
+      <ul>
+        <li>Full-stack event platform with RESTful CRUD APIs for creating, viewing, updating, and deleting events</li>
+        <li>Responsive, interactive UI using Bootstrap, jQuery, and Swiper.js, with an image gallery and countdown timers</li>
+      </ul>
+      <div class="go">View on GitHub <span>→</span></div>
+    </a>
+    <a class="card proj rv" href="https://github.com/yash1880/House" target="_blank" rel="noopener">
+      <div class="idx">04</div><h3>Figma to Code — House</h3>
+      <div class="stack">HTML5 · CSS3 · JavaScript · Bootstrap 5</div>
+      <ul>
+        <li>Converted a Figma design into a responsive apartment rental landing page with hero, gallery, and testimonial sections</li>
+        <li>Mobile-friendly navigation and breakpoint handling for a seamless cross-device experience</li>
+      </ul>
+      <div class="go">View on GitHub <span>→</span></div>
+    </a>
+    <a class="card proj rv" href="https://github.com/yash1880/GreenMind" target="_blank" rel="noopener">
+      <div class="idx">05</div><h3>Figma to Code — GreenMind</h3>
+      <div class="stack">HTML5 · CSS3 · JavaScript</div>
+      <ul>
+        <li>Responsive plant shop landing page built from a Figma design with hero, product, and testimonial sections</li>
+        <li>Custom auto-scrolling testimonial carousel with a seamless right-to-left loop and hover/touch-to-pause interaction</li>
+      </ul>
+      <div class="go">View on GitHub <span>→</span></div>
+    </a>
+  </section>
+
+  <h2 id="certifications">Certifications</h2>
+  <section class="certs">
+    <div class="card cert rv"><div class="who">Infosys</div><h3>HTML5</h3></div>
+    <div class="card cert rv"><div class="who">Infosys</div><h3>JavaScript</h3></div>
+    <div class="card cert rv"><div class="who">ThingQbator</div><h3>Full Stack Development with MERN</h3></div>
+  </section>
+
+  <section class="card contact rv" id="contact">
+    <h2>Let's build something together.</h2>
+    <p>I'm open to internships and entry-level full-stack roles. The fastest way to reach me is email.</p>
+    <div class="clinks">
+      <a href="mailto:yashbulchandani34@gmail.com"><small>Email</small>yashbulchandani34@gmail.com</a>
+      <a href="tel:+919714580820"><small>Phone</small>+91 97145 80820</a>
+      <a href="https://www.linkedin.com/in/yash-bulchandani-869512399/" target="_blank" rel="noopener"><small>LinkedIn</small>linkedin.com/in/yash-bulchandani</a>
+      <a href="https://github.com/yash1880" target="_blank" rel="noopener"><small>GitHub</small>github.com/yash1880</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap"><span>© 2026 Yash Bulchandani</span><span>built with intent</span></footer>
+
+<script>
+document.documentElement.classList.add('js');
+(function () {
+  var els = document.querySelectorAll('.rv');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: 0.1 });
+  els.forEach(function (e, i) { e.style.transitionDelay = ((i % 3) * 70) + 'ms'; io.observe(e); });
+})();
+</script>
+</body>
+</html>
